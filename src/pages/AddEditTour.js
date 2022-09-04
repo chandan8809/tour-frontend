@@ -18,7 +18,7 @@ const AddEditTour = () => {
     const {error,loading}=useSelector((state)=>({...state.tour}))
     const {user}=useSelector((state)=>({...state.auth}))
     const {title,description,tags}=tourData;
-    console.log(title,description,tags)
+    
     const dispatch=useDispatch()
     const navigate=useNavigate()
 
