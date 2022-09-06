@@ -39,13 +39,13 @@ const Header = () => {
                {user?.result?._id &&(
                 <>
                 <MDBNavbarItem>
-                <MDBNavbarLink href='/'>
+                <MDBNavbarLink href='/addTour'>
                     <p className='header-text'>AddTour</p>
                     </MDBNavbarLink>
                 </MDBNavbarItem>
 
                 <MDBNavbarItem>
-                    <MDBNavbarLink href='/'>
+                    <MDBNavbarLink href='/dashboard'>
                         <p className='header-text'>Dashboard</p>
                     </MDBNavbarLink>
                 </MDBNavbarItem>

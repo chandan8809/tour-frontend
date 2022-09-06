@@ -35,7 +35,8 @@ export const getTour = createAsyncThunk("tour/getTour", async(id,{rejectWithValu
 
 export const getTourByUser = createAsyncThunk("tour/getTourByUser", async(userId,{rejectWithValue})=>{
     try{
-        const response = await api.getTour(userId)
+        const response = await api.getTourByUser(userId)
+        console.log({response})
         return response.data;
 
     }catch(error){
