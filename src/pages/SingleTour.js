@@ -3,11 +3,12 @@ import {MDBCard,MDBCardBody,MDBCardText,MDBCardImage,MDBContainer,MDBIcon} from 
 import {useParams} from "react-router-dom"
 import { useSelector,useDispatch } from 'react-redux'
 import moment from 'moment'
-import { getTour } from '../redux/features/tourSlice'
+import { getRelatedTours, getTour } from '../redux/features/tourSlice'
+import RelatedTours from '../components/RelatedTours'
 
 const SingleTour = () => {
   const dispatch=useDispatch()
-  const {tour}= useSelector((state)=>({...state.tour}))
+  const {tour,relatedTours}= useSelector((state)=>({...state.tour}))
   const {id}=useParams();
   useEffect(()=>{
     if(id){
@@ -15,6 +16,12 @@ const SingleTour = () => {
     }
   },[id])
 
+  const tags=tour?.tags
+  useEffect(()=>{
+    if(tags){
+      dispatch(getRelatedTours(tags))
+    }
+  },[tags])
   return (
     <>
     <MDBContainer>
@@ -42,6 +49,7 @@ const SingleTour = () => {
               {tour.description}
             </MDBCardText>
         </MDBCardBody>
+         <RelatedTours relatedTours={relatedTours} tourId={id}/>
       </MDBCard>
     </MDBContainer>
     </>
