@@ -18,6 +18,7 @@ const Dashboard = () => {
          
             dispatch(getTourByUser(userId))
         }
+        // eslint-disable-next-line
     },[userId])
 
     const excerpt=(str)=>{
@@ -36,8 +37,16 @@ const Dashboard = () => {
   }
   return (
     <div style={{margin:"auto" ,padding:"120px", maxWidth:"900px", alignContent:"center"}}>
-        <h4 className='text-center'>Dashboard : {user?.result?.name}</h4>
+       {userTours.length===0 && (
+        <h3>No tour available with the user: {user?.result?.name}</h3>
+       )}
+       {userTours>0 && (
+        <>
+         <h4 className='text-center'>Dashboard : {user?.result?.name}</h4>
         <hr style={{maxWidth:"570px"}}/>
+        </>
+       )}
+       
         {userTours && userTours.map((item)=>(
           <MDBCardGroup key={item._id}>
             <MDBCard style={{maxWidth:"600px"}}  className="mt-2">

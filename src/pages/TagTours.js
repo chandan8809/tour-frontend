@@ -17,7 +17,7 @@ const TagTours = () => {
         if(tag){
             dispatch(getToursByTag(tag))
         }
-
+       // eslint-disable-next-line
     },[])
 
     if(loading){
@@ -30,7 +30,7 @@ const TagTours = () => {
 
         {tagTours && tagTours.map((item)=>(
             <MDBCardGroup key={item._id}>
-                <MDBCard style={{maxWidth:"600px"}}>
+                <MDBCard style={{maxWidth:"600px",marginTop:"8px"}}>
                     <MDBRow className='g-0'>
                         <MDBCol md="4">
                             <MDBCardImage className='rounded' src={item.imageFile} alt={item.title} fluid/>

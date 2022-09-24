@@ -16,7 +16,7 @@ const initialState={
 const AddEditTour = () => {
     const [tourData,setTourData]=useState(initialState);
     const [tagerror,setTagError]=useState(null)
-    const {error,loading,userTours}=useSelector((state)=>({...state.tour}))
+    const {error,userTours}=useSelector((state)=>({...state.tour}))
     const {user}=useSelector((state)=>({...state.auth}))
     const {title,description,tags}=tourData;
 
@@ -26,6 +26,7 @@ const AddEditTour = () => {
             const singlTour=userTours.find((tour)=>tour._id===id)
             setTourData({...singlTour})
         }
+        // eslint-disable-next-line
     },[id])
     
     const dispatch=useDispatch()
@@ -33,6 +34,7 @@ const AddEditTour = () => {
 
     useEffect(()=>{
       error && toast.error(error)
+      // eslint-disable-next-line
     },[error])
     const handleSubmit=(e)=>{
         e.preventDefault()

@@ -209,17 +209,17 @@ const tourSlice = createSlice({
 
         
 
-        [updateTour.pending]:(state,action)=>{},
+        [likeTour.pending]:(state,action)=>{},
 
-        [updateTour.fulfilled]:(state,action)=>{
+        [likeTour.fulfilled]:(state,action)=>{
             state.loading=false 
             const {arg:{_id}} =action.meta;
             if(_id){
-                state.tours=state.tours.filter((item=>item._id===_id ? action.payload : item))
+                console.log("kya mile",_id)
+                state.tours=state.tours.map((item)=>item._id===_id ? action.payload : item);
             }
         },
-        [updateTour.rejected]:(state,action)=>{
-          
+        [likeTour.rejected]:(state,action)=>{
             state.error=action.payload.message
         },
 
